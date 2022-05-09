@@ -7,6 +7,7 @@ def rainy_month(rainfallData:str, maxRain:float) -> list:
         rainfall= float(num.strip(','))
         if rainfall > maxRain:
             moreRain.append(rainfall)
+    return moreRain
 
 num_rainy_months = len(rainy_month(rainfall_mi, 3))
 print(f"There was {num_rainy_months} very rainy months.")
