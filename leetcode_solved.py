@@ -34,6 +34,18 @@ class Solution:
             res.append(sum(nums[:n]))
             
         return res
+    
+    def pivotIndex(self, nums: List[int]) -> int:
+
+        for i in range(len(nums)):
+
+            right_nums = sum(nums[i+1:])
+            left_nums = sum(nums[:i])
+
+            if right_nums == left_nums:
+                return i
+            else:
+                return -1
 
 
 ## Test roman to integers
