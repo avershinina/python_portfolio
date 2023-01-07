@@ -51,6 +51,43 @@ class Solution:
                 return i
             else:
                 return -1
+            
+            
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        """
+        Given two strings s and t, determine if they are isomorphic.
+        Two strings s and t are isomorphic if the characters in s can be replaced to get t.
+        All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character, but a character may map to itself.
+        Example: s = "egg", t = "add" -> True
+        """
+        
+        # This code is not efficient because it calls the index() function twice for each character in the strings s and t. 
+        # The index() function has a time complexity of O(n) because it needs to search through the entire string 
+        # to find the index of the given character. 
+        # Therefore, the time complexity of this code is O(n^2) because it calls index() twice for each character in the strings.
+        
+        
+        # strings of different length can not be isomorphic
+        if len(s) == len(t): 
+
+
+            # Use index to collect indexes of letters
+            for l in s:
+                s_idxs.append(s.index(l))
+
+            for l in t:
+                t_idxs.append(t.index(l))
+
+
+            # compare indexes
+            if s_idxs == t_idxs:
+                return True
+            else:
+                return False
+        
+        # If the length of s and t is not equal then return False
+        else:
+            return False
 
 
 ## Test roman to integers
