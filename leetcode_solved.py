@@ -88,6 +88,37 @@ class Solution:
         # If the length of s and t is not equal then return False
         else:
             return False
+        
+        
+    def isSubsequence(self, s: str, t: str) -> bool:
+        """Given two strings s and t, 
+        return true if s is a subsequence of t, or false otherwise.
+        A subsequence of a string is a new string 
+        that is formed from the original string by deleting some 
+        (can be none) of the characters 
+        without disturbing the relative positions 
+        of the remaining characters. 
+        (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
+        """
+        
+        s_pointer = 0
+        t_pointer = 0
+
+        my_substr = []
+
+        while s_pointer < len(s) and t_pointer < len(t):
+
+            if s_pointer == t_pointer:
+                my_substr.append(s[s_pointer])
+                s_pointer = s_pointer + 1
+                t_pointer = t_pointer + 1
+            else:
+                t_pointer = t_pointer + 1
+                
+        if my_substr == list(s):
+            return True
+        else:
+            return False
 
 
 ## Test roman to integers
