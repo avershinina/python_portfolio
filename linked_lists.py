@@ -38,11 +38,15 @@ class ListNode:
 # return merged_list
 
 
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         merged_list = ListNode(0) # points to head node
-
-        print("Merged", merged_list)
         current = merged_list # points to current node 
         # When you use current = merged_list, current and merged_list 
         # are both references to the same object in memory. 
@@ -54,17 +58,25 @@ class Solution:
         list2_ptr = list2
 
         while list1_ptr != None or list2_ptr != None:
-            if list1_ptr != None:
-                current.next = ListNode(list1_ptr.val)
-                current = current.next
-                list1_ptr = list1_ptr.next
-                print("Merged", merged_list)
-
-            if list2_ptr != None:
+            if list1_ptr == None:
                 current.next = ListNode(list2_ptr.val)
                 current = current.next
                 list2_ptr = list2_ptr.next
-                print("Merged", merged_list)
-        
+
+            elif list2_ptr == None:
+                current.next = ListNode(list1_ptr.val)
+                current = current.next
+                list1_ptr = list1_ptr.next  
+
+            else:
+                if list1_ptr.val < list2_ptr.val:
+                    current.next = ListNode(list1_ptr.val)
+                    current = current.next
+                    list1_ptr = list1_ptr.next
+                else:
+                    current.next = ListNode(list2_ptr.val)
+                    current = current.next
+                    list2_ptr = list2_ptr.next
+      
 
         return merged_list.next
