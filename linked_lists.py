@@ -3,46 +3,7 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
-# To combine the lists, you can create a new list and add the names from both of the original lists to it. 
-# You can do this by creating a new node for each name and linking it to the end of the new list.
-# To keep track of the new list, you can use a pointer called current that points to the current position in the list. 
-# You can also use another pointer called merged_list that points to the head of the list (the first node).
 
-# # Set up an empty merged list
-# merged_list = null
-
-# # Set up a pointer to the head of the merged list
-# current = merged_list
-
-# # Set up pointers to the heads of the input lists
-# list1_ptr = head of list1
-# list2_ptr = head of list2
-
-# # Loop until both pointers are null
-# while list1_ptr is not null or list2_ptr is not null:
-#     # Check if list1_ptr is not null
-#     if list1_ptr is not null:
-#         # Add the current node from list1 to the merged list
-#         current.next = ListNode(list1_ptr.val)
-#         current = current.next
-#         list1_ptr = list1_ptr.next
-
-#     # Check if list2_ptr is not null
-#     if list2_ptr is not null:
-#         # Add the current node from list2 to the merged list
-#         current.next = ListNode(list2_ptr.val)
-#         current = current.next
-#         list2_ptr = list2_ptr.next
-
-# # Return the head of the merged list
-# return merged_list
-
-
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
 
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
@@ -80,3 +41,24 @@ class Solution:
       
 
         return merged_list.next
+    
+    
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        # Initialize pointers: prev as None, current as head and next as None
+        prev_val = None
+        current_val = head
+        next_val = None
+        
+        # Traverse through the list
+        while current_val != None:
+            # Store next node
+            next_val = current_val.next
+            # reverse current node's pointer
+            current_val.next = prev_val
+            # move prev and current one step forward
+            prev_val = current_val
+            current_val = next_val
+        
+        # return the reversed list
+        return prev_val
+
