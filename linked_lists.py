@@ -61,4 +61,19 @@ class Solution:
         
         # return the reversed list
         return prev_val
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        length = 0
+        h = head
+        # Count the number of nodes in the list
+        while h:
+            length += 1
+            h = h.next
+        middle = (length + 1) // 2 if length % 2 == 1 else (length // 2) + 1
+        c = 0
+        h = head
+        while h:
+            c += 1
+            if c == middle:
+                return h
+            h = h.next
 
