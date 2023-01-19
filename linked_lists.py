@@ -61,6 +61,8 @@ class Solution:
         
         # return the reversed list
         return prev_val
+    
+    
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
         length = 0
         h = head
