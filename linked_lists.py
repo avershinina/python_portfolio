@@ -78,4 +78,29 @@ class Solution:
             if c == middle:
                 return h
             h = h.next
+    
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        """Given the head of a linked list, return the node where the cycle begins. If there is no cycle, return null."""
+        # Check if the linked list is empty or not
+        if head is None:
+            return None
+        # Initialize two pointers, slow and fast
+        slow = head
+        fast = head
+        # Traverse the linked list with two pointers
+        while fast != None and fast.next != None:
+            slow = slow.next
+            fast = fast.next.next
+            # Check if the fast pointer catches up with the slow pointer
+            if slow == fast:
+                # Move both pointers one step at a time, until they meet again
+                slow = head
+                while slow != fast:
+                    slow = slow.next
+                    fast = fast.next
+                # The node where they meet is the start of the loop
+                return slow
+        # If there is no loop in the list, return None
+        return None
 
+    
